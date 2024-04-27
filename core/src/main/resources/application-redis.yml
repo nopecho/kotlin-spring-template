@@ -1,0 +1,9 @@
+spring:
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6666}
+      username: ${REDIS_USERNAME:local}
+      password: ${REDIS_PASSWORD:local}
+      ssl:
+        enabled: false
