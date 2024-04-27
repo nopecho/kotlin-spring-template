@@ -1,3 +1,3 @@
-rootProject.name = "universe-kotlin-server-template"
+rootProject.name = "kotlin-server-template"
 include 'core'
 include 'bootstrap'
