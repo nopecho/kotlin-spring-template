@@ -1,7 +1,6 @@
 apply {
     plugin "java-library"
     plugin "org.jetbrains.kotlin.jvm"
-    plugin "org.jetbrains.kotlin.plugin.serialization"
     plugin "org.jetbrains.kotlin.kapt"
 
     plugin "org.jetbrains.kotlin.plugin.spring"
