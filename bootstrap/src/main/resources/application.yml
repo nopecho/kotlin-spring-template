@@ -7,15 +7,6 @@ spring:
     active: local
     include:
         - jdbc
-#        - redis
-#        - mongo
-  cloud:
-    aws:
-      region:
-        static: ap-northeast-2
-      credentials:
-        access-key: ${AWS_ACCESS_KEY:local}
-        secret-key: ${AWS_SECRET_KEY:local}
 
 ---
 
@@ -38,5 +29,3 @@ spring:
   config:
     activate:
       on-profile: prod
-    import:
-      - optional:aws-parameterstore:/prod/

@@ -1,4 +1,3 @@
 dependencies {
     implementation(project(':core'))
-    implementation "io.awspring.cloud:spring-cloud-aws-starter-parameter-store"
 }
