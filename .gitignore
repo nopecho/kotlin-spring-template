@@ -123,3 +123,6 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+**/resources/static/docs
+**/local/k6/report

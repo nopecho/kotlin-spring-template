@@ -1,3 +1,12 @@
-rootProject.name = "kotlin-server-template"
-include 'core'
+rootProject.name = "spring-template-kotlin" // project name
 include 'bootstrap'
+include 'bootstrap:bootstrap-api'
+include 'common'
+include 'common:common-utils'
+include 'common:common-web'
+include 'core'
+include 'core:api'
+include 'core:domain'
+include 'core:infra'
+include 'core:infra:infra-jdbc'
+include 'core:infra:infra-client'

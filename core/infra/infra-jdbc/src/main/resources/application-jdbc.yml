@@ -1,0 +1,7 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://${POSTGRES_URL:localhost:5432}/${POSTGRES_DATABASE:local}
+    username: ${POSTGRES_USERNAME:local}
+    password: ${POSTGRES_PASSWORD:local}
+    hikari:
+      maximum-pool-size: 10

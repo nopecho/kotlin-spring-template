@@ -1,0 +1,6 @@
+subprojects {
+    dependencies {
+        implementation(project(":core:domain"))
+        testApi(testFixtures(project(":core:domain")))
+    }
+}

@@ -1,0 +1,6 @@
+server:
+  port: ${PORT:10000}
+  shutdown: graceful
+  error:
+    whitelabel:
+      enabled: false

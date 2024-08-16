@@ -1,0 +1,13 @@
+openapi: 3.0.1
+info:
+  title: Open API Spec
+  contact:
+    name: nopecho
+    email: ch.jooon@gmail.com
+  version: 1.0.0
+servers:
+- url: http://localhost:10000
+tags: []
+paths: {}
+components:
+  schemas: {}

@@ -1,7 +1,0 @@
-spring:
-  data:
-    mongodb:
-      uri: mongodb://${MONGO_USERNAME:local}:${MONGO_PASSWORD:local}@${MONGO_URL:localhost:27017}
-      auto-index-creation: true
-      authentication-database: admin
-      database: ${MONGO_DATABASE:local}

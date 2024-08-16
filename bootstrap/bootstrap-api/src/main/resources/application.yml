@@ -1,0 +1,29 @@
+spring:
+  profiles:
+    active: local
+    include:
+      - web
+      - jdbc
+      - client
+
+---
+
+logging:
+  level:
+    org:
+      springframework:
+        jdbc:
+          core:
+            JdbcTemplate: DEBUG
+
+spring:
+  config:
+    activate:
+      on-profile: local
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: prod

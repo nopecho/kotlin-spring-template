@@ -1,0 +1,33 @@
+plugins {
+    id "com.epages.restdocs-api-spec" version "${restDocsApiSpecVersion}"
+}
+
+dependencies {
+    implementation(project(':core:api'))
+    implementation(project(':core:infra:infra-jdbc'))
+    implementation(project(':core:infra:infra-client'))
+
+    testImplementation "org.springframework.restdocs:spring-restdocs-restassured"
+    testImplementation "com.epages:restdocs-api-spec:${restDocsApiSpecVersion}"
+    testImplementation "com.epages:restdocs-api-spec-restassured:${restDocsApiSpecVersion}"
+    testImplementation "io.rest-assured:kotlin-extensions"
+    testApi(testFixtures(project(':common:common-utils')))
+}
+
+test {
+    finalizedBy "openapi3"
+}
+
+openapi3 {
+    servers = [{ url = "http://localhost:10000" }]
+    title = 'Open API Spec'
+    format = 'yaml'
+    contact = {
+        name = 'nopecho'
+        email = 'ch.jooon@gmail.com'
+    }
+    copy {
+        from "${buildDir}/api-spec"
+        into "${projectDir}/src/main/resources"
+    }
+}
