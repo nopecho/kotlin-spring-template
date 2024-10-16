@@ -1,7 +1,7 @@
 subprojects {
     dependencies {
-        implementation(project(":common:common-utils"))
-        testApi(testFixtures(project(":common:common-utils")))
+        implementation(project(":common:common-core"))
+        testApi(testFixtures(project(":common:common-core")))
     }
 
     bootJar {

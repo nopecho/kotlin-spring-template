@@ -5,13 +5,14 @@ plugins {
 dependencies {
     implementation(project(':core:api'))
     implementation(project(':core:infra:infra-jdbc'))
-    implementation(project(':core:infra:infra-client'))
 
     testImplementation "org.springframework.restdocs:spring-restdocs-restassured"
     testImplementation "com.epages:restdocs-api-spec:${restDocsApiSpecVersion}"
     testImplementation "com.epages:restdocs-api-spec-restassured:${restDocsApiSpecVersion}"
     testImplementation "io.rest-assured:kotlin-extensions"
-    testApi(testFixtures(project(':common:common-utils')))
+    testApi(testFixtures(project(':common:common-core')))
+    testApi(testFixtures(project(':core:domain')))
+    testApi(testFixtures(project(':core:infra:infra-jdbc')))
 }
 
 test {

@@ -1,4 +1,4 @@
-package com.nopecho.common.utils
+package com.nopecho.common.core
 
 import java.time.LocalDateTime
 

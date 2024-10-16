@@ -10,7 +10,7 @@ import org.springframework.transaction.support.TransactionTemplate
 
 @Import(TestJdbcConfig::class)
 @SpringJUnitConfig(TestJdbcScan::class)
-abstract class TestJdbcSupport : TestcontainersJdbcSupport() {
+abstract class TestJdbcSupport : PostgresTestJdbcSupport() {
 
     @Autowired
     private lateinit var template: TransactionTemplate

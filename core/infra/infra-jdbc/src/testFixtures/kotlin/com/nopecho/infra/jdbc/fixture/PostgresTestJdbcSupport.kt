@@ -10,8 +10,8 @@ import org.testcontainers.junit.jupiter.Container
 import org.testcontainers.utility.DockerImageName.parse
 import javax.sql.DataSource
 
-@Import(TestcontainersJdbcSupport.Companion.DataSourceConfig::class)
-abstract class TestcontainersJdbcSupport {
+@Import(PostgresTestJdbcSupport.Companion.DataSourceConfig::class)
+abstract class PostgresTestJdbcSupport {
 
     companion object {
         private const val POSTGRES_IMAGE = "postgres:16-alpine"
