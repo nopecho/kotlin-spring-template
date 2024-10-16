@@ -44,6 +44,10 @@ else
 endif
 .PHONY: run
 
+code:
+	$(CURDIR)/gradlew clean kaptKotlin
+.PHONY: code
+
 clean:
 	$(CURDIR)/gradlew clean
 
