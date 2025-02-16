@@ -7,14 +7,14 @@ TBD
 ### Version
 
 - Java `21`
-- Kotlin `1.9.23`
-- Spring Boot `3.2.2`
+- Kotlin `2.0.20`
+- Spring Boot `3.4.2`
 
 ### Modules Overview
 
 ```
 ├── bootstrap
-├── common
+├── support
 ├── core
 │   ├── api
 │   ├── domain
