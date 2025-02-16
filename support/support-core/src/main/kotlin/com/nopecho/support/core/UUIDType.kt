@@ -1,4 +1,4 @@
-package com.nopecho.common.core
+package com.nopecho.support.core
 
 enum class UUIDType {
     TIME,

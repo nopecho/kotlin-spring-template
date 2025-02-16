@@ -1,6 +1,6 @@
 package com.nopecho.common.web.model
 
-import com.nopecho.common.core.log
+import com.nopecho.support.core.log
 
 data class ErrorResponse(
     val code: Int,

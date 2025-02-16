@@ -1,4 +1,4 @@
-package com.nopecho.common.core.fixture
+package com.nopecho.support.core.fixture
 
 import org.springframework.util.StopWatch
 import java.util.concurrent.ThreadLocalRandom

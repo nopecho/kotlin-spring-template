@@ -1,4 +1,4 @@
-package com.nopecho.common.core
+package com.nopecho.support.core
 
 import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.databind.ObjectMapper

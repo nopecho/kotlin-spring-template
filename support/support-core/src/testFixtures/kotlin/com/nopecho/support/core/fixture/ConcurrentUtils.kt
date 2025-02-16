@@ -1,4 +1,4 @@
-package com.nopecho.common.core.fixture
+package com.nopecho.support.core.fixture
 
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.ExecutorService
