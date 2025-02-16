@@ -10,7 +10,7 @@ dependencies {
     testImplementation "com.epages:restdocs-api-spec:${restDocsApiSpecVersion}"
     testImplementation "com.epages:restdocs-api-spec-restassured:${restDocsApiSpecVersion}"
     testImplementation "io.rest-assured:kotlin-extensions"
-    testApi(testFixtures(project(':common:common-core')))
+    testApi(testFixtures(project(':support:support-core')))
     testApi(testFixtures(project(':core:domain')))
     testApi(testFixtures(project(':core:infra:infra-jdbc')))
 }
