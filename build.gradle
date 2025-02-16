@@ -19,7 +19,9 @@ allprojects {
         implementation "com.fasterxml.jackson.module:jackson-module-kotlin:2.17.+"
         implementation "com.fasterxml.jackson.datatype:jackson-datatype-jsr310"
         implementation "org.springframework.boot:spring-boot-starter"
+        implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core"
 
+        testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test"
         testImplementation "org.springframework.boot:spring-boot-starter-test"
         testImplementation 'org.springframework.boot:spring-boot-testcontainers'
         testImplementation 'org.testcontainers:junit-jupiter'
@@ -29,8 +31,6 @@ allprojects {
         testImplementation "io.mockk:mockk:${mockkVersion}"
         testImplementation platform("org.junit:junit-bom:${junitBomVersion}")
         testImplementation "org.junit.jupiter:junit-jupiter"
-        // coroutines
-        // testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3"
     }
 
     dependencyManagement {
