@@ -22,7 +22,7 @@ fun randomDouble(min: Double = -1.0, max: Double = 2.0): Double {
     return Random.nextDouble(min, max)
 }
 
-fun randomSleep() {
-    val random = ThreadLocalRandom.current().nextInt(300, 500)
+fun randomSleep(min: Int = 30, max: Int = 50) {
+    val random = ThreadLocalRandom.current().nextInt(min, max)
     Thread.sleep(random.toLong())
 }

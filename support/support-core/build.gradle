@@ -2,4 +2,6 @@ dependencies {
     implementation "com.fasterxml.uuid:java-uuid-generator:5.0.0"
     testFixturesApi "org.springframework.boot:spring-boot-starter-test"
     testFixturesApi "org.testcontainers:junit-jupiter"
+    testFixturesApi "org.jetbrains.kotlinx:kotlinx-coroutines-core"
+    testFixturesApi "org.jetbrains.kotlinx:kotlinx-coroutines-test"
 }

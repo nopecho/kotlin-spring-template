@@ -1,57 +1,64 @@
 package com.nopecho.support.core.fixture
 
+import com.nopecho.support.core.VIRTUAL
+import kotlinx.coroutines.*
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
 object ConcurrentUtils {
-    private const val DEFAULT_THREAD_COUNT = 200
 
-    fun run(threadCount: Int = DEFAULT_THREAD_COUNT, task: () -> Unit): List<Throwable> {
-        val result = mutableListOf<Throwable>()
-        val (executor, startLatch, doneLatch) = setup(threadCount)
+    fun runWithCoroutine(
+        concurrentCount: Int = 200,
+        dispatcher: CoroutineDispatcher = Dispatchers.VIRTUAL,
+        task: () -> Unit
+    ) {
+        val startSignal = CompletableDeferred<Unit>()
+        runBlocking(dispatcher) {
+            val jobs = (1..concurrentCount).map {
+                async {
+                    runCatching {
+                        startSignal.await()
+                        task()
+                    }.getOrElse {
+                        it.printStackTrace()
+                    }
+                }
+            }
+            startSignal.complete(Unit)
+            jobs.awaitAll()
+        }
+    }
 
-        repeat(threadCount) {
+    fun runWithThread(
+        concurrentCount: Int = 200,
+        task: () -> Unit
+    ) {
+        val (executor, startLatch, doneLatch) = setupThread(concurrentCount)
+        repeat(concurrentCount) {
             executor.submit {
                 try {
                     startLatch.await()
                     task()
                 } catch (e: Throwable) {
-                    synchronized(result) {
-                        println("error: ${e.message}")
-                        result.add(e)
-                    }
+                    e.printStackTrace()
                 } finally {
                     doneLatch.countDown()
                 }
             }
         }
-        release(executor, startLatch, doneLatch)
-        return result
+        releaseThread(executor, startLatch, doneLatch)
     }
 
-    fun <T> call(threadCount: Int = DEFAULT_THREAD_COUNT, task: () -> T): List<T> {
-        val result = mutableListOf<T>()
-        val (executor, startLatch, doneLatch) = setup(threadCount)
-        repeat(threadCount) {
-            executor.submit {
-                try {
-                    startLatch.await()
-                    synchronized(result) {
-                        result.add(task())
-                    }
-                } catch (e: Throwable) {
-                    println("error: ${e.message}")
-                } finally {
-                    doneLatch.countDown()
-                }
-            }
-        }
-        release(executor, startLatch, doneLatch)
-        return result
+    private fun setupThread(threadCount: Int): Triple<ExecutorService, CountDownLatch, CountDownLatch> {
+        // 가상 스레드 풀
+        val executor = Executors.newVirtualThreadPerTaskExecutor()
+        val startLatch = CountDownLatch(1)
+        val doneLatch = CountDownLatch(threadCount)
+        return Triple(executor, startLatch, doneLatch)
     }
 
-    private fun release(
+    private fun releaseThread(
         executor: ExecutorService,
         startLatch: CountDownLatch,
         doneLatch: CountDownLatch,
@@ -59,12 +66,5 @@ object ConcurrentUtils {
         startLatch.countDown()
         doneLatch.await()
         executor.shutdown()
-    }
-
-    private fun setup(threadCount: Int): Triple<ExecutorService, CountDownLatch, CountDownLatch> {
-        val executor = Executors.newFixedThreadPool(threadCount)
-        val startLatch = CountDownLatch(1)
-        val doneLatch = CountDownLatch(threadCount)
-        return Triple(executor, startLatch, doneLatch)
     }
 }
