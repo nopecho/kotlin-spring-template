@@ -1,12 +1,17 @@
 spring:
   profiles:
-    active: local
+    active: ${SPRING_PROFILES_ACTIVE:local}
     include:
       - web
       - jdbc
       - client
 
 ---
+
+spring:
+  config:
+    activate:
+      on-profile: local
 
 logging:
   level:
@@ -15,11 +20,6 @@ logging:
         jdbc:
           core:
             JdbcTemplate: DEBUG
-
-spring:
-  config:
-    activate:
-      on-profile: local
 
 ---
 
