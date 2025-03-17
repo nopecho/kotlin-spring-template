@@ -2,6 +2,7 @@ subprojects {
     dependencies {
         implementation(project(":support:support-core"))
         testApi(testFixtures(project(":support:support-core")))
+        testFixturesApi(testFixtures(project(":support:support-core")))
     }
 
     bootJar {
